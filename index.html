@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://unpkg.com/vue@3"></script>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            display: grid;
+            place-items: center;
+        }
+
+        .text-red {
+            color: red;
+        }
+
+        .text-green {
+            color: green;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,6 +31,10 @@
         <p>
             {{ greeting }} ({{ greeting.length }})
         </p>
+
+        <button :class="active ?'text-red' : 'text-green'" @click=" toogleActive">
+            Clicked
+        </button>
     </div>
 
     <script>
@@ -21,7 +42,18 @@
             data() {
                 return {
                     greeting: "Hello Word",
+                    buttonClasses: 'text-green',
+                    active: false,
                 };
+            },
+
+            methods: {
+                toogle() {
+                    this.buttonClasses = 'text-red';
+                },
+                toogleActive() {
+                    this.active = !this.active;
+                }
             },
 
             mounted() {
