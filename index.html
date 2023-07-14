@@ -15,51 +15,64 @@
             place-items: center;
         }
 
-        .text-red {
-            color: red;
+        .fruit_none {
+            display: none;
         }
 
-        .text-green {
-            color: green;
+        .legume_none {
+            display: none;
+        }
+
+        .fruit_block {
+            display: block;
+        }
+
+        .legume_block {
+            display: block;
         }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <input type="text" v-model="greeting">
-        <p>
-            {{ greeting }} ({{ greeting.length }})
-        </p>
-
-        <button :class="active ?'text-red' : 'text-green'" @click=" toogleActive">
-            Clicked
-        </button>
+        <div>
+            <input type="radio" name="radio1" id="fruits">
+            <label for="fruits" @click="toogleFruit">Fruit</label>
+        </div>
+        <div :class="fruitActive ? fruit_block : fruitNone">
+            <p>Fruits content</p>
+        </div>
+        <div>
+            <input type="radio" name="radio1" id="legumes">
+            <label for="legumes" @click="toogleLegume">Legumes</label>
+        </div>
+        <div :class="legumeActive ? legume_block : legumeNone">
+            <p>Légumes content</p>
+        </div>
     </div>
 
     <script>
         Vue.createApp({
             data() {
                 return {
-                    greeting: "Hello Word",
-                    buttonClasses: 'text-green',
-                    active: false,
-                };
-            },
-
-            methods: {
-                toogle() {
-                    this.buttonClasses = 'text-red';
-                },
-                toogleActive() {
-                    this.active = !this.active;
+                    fruitNone: 'fruit_none',
+                    legumeNone: 'legume_none',
+                    fruitBlock: 'fruit_block',
+                    legumeBlock: 'legume_block',
+                    legumeActive: false,
+                    fruitActive: false,
                 }
             },
 
-            mounted() {
-                setTimeout(() => {
-                    this.greeting = 'New message';
-                }, 3000);
+            methods: {
+                toogleFruit() {
+                    this.fruitActive = true;
+                    this.legumeActive = false;
+                },
+                toogleLegume() {
+                    this.legumeActive = true;
+                    this.fruitActive = false;
+                }
             }
         }).mount('#app');
     </script>
