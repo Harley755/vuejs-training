@@ -1,4 +1,8 @@
+import AssignmentList from "./AssignmentList.js";
+
 export default {
+    components: { AssignmentList },
+    
     template: `
         <div>
             <input type="radio" name="radio1" id="fruits">
@@ -15,35 +19,11 @@ export default {
             <p>Légumes content</p>
         </div>
 
-        <section v-show="inProgresAssignments.length">
-            <h2 class="font-bold mt-5">In progress</h2>
-
-            <ul>
-                <li v-for="assignment in inProgresAssignments" :key="assignment.id">
-                    <label>
-                        {{assignment.name }}
-                        <input type="checkbox" v-model="assignment.complete">
-                    </label>
-                </li>
-            </ul>
-
-            <!-- <pre>
-                {{ assignments }}
-            </pre> -->
+        <section class="space-y-6">
+            <assignment-list title="In progress" :assignments="inProgresAssignments"></assignment-list>
+            <assignment-list title="Completed" :assignments="completedAssignments"></assignment-list>
         </section>
 
-        <section v-show="completedAssignments.length">
-            <h2 class="font-bold mt-5">Completed</h2>
-
-            <ul>
-                <li v-for="assignment in completedAssignments" :key="assignment.id">
-                    <label>
-                        {{assignment.name }}
-                        <input type="checkbox" v-model="assignment.complete">
-                    </label>
-                </li>
-            </ul>
-        </section>
     `,
 
     data() {
