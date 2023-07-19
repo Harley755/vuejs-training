@@ -5,6 +5,7 @@ export default {
     components: { AssignmentList, AssignmentCreate },
     
     template: `
+        <!--
         <div>
             <input type="radio" name="radio1" id="fruits">
             <label for="fruits" @click="toogleFruit">Fruit</label>
@@ -19,12 +20,22 @@ export default {
         <div :class="legumeActive ? legume_block : legumeNone">
             <p>Légumes content</p>
         </div>
+        !-->
 
-        <section class="space-y-6">
-            <assignment-list title="In progress" :assignments="filter.inProgres"></assignment-list>
-            <assignment-list title="Completed" :assignments="filter.completed"></assignment-list>
+        <section class="flex gap-8">
+            <assignment-list title="In progress" :assignments="filter.inProgres">
+                <assignment-create @add="add"></assignment-create>
+            </assignment-list>
 
-            <assignment-create @add="add"></assignment-create>
+            <div v-show="showCompleted">
+                <assignment-list 
+                    title="Completed" 
+                    :assignments="filter.completed" 
+                    can-toogle
+                    @toogle="showCompleted = !showCompleted"
+                >
+                </assignment-list>
+            </div>
         </section>
     `,
     data() {
@@ -37,6 +48,8 @@ export default {
             fruitActive: false,
 
             assignments: [],
+
+            showCompleted: true,
         }
     },
 
@@ -56,7 +69,7 @@ export default {
                 complete: false,
                 id: this.assignments.length + 1,
             });
-        }
+        },
     },
 
     created() {
