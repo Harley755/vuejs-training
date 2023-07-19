@@ -1,22 +1,28 @@
 {
-    "assingment": [
+    "assignments": [
         {
+            "id": 1,
             "name": "Finish Project",
-            "complete": false,
-            "tag": "maths",
-            "id": 1
+            "tag": "programming",
+            "complete": false
         },
         {
+            "id": 2,
             "name": "Read Chapter 4",
-            "complete": false,
             "tag": "science",
-            "id": 2
+            "complete": false
         },
         {
+            "id": 3,
             "name": "Turn in homework",
-            "complete": false,
-            "tag": "science",
-            "id": 3
+            "tag": "math",
+            "complete": true
+        },
+        {
+            "id": 4,
+            "name": "Finish Laracast Videos",
+            "tag": "programming",
+            "complete": false
         }
     ]
 }
