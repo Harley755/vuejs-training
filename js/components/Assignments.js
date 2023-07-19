@@ -36,11 +36,7 @@ export default {
             legumeActive: false,
             fruitActive: false,
 
-            assignments: [
-                { name: 'Finish Project', complete: false, tag: 'maths', id: 1 },
-                { name: 'Read Chapter 4', complete: false, tag: 'science', id: 2 },
-                { name: 'Turn in homework', complete: false, tag: 'science', id: 3 },
-            ],
+            assignments: [],
         }
     },
 
