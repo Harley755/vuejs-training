@@ -16,6 +16,7 @@ export default {
 
     props: {
         initialTags: Array,
+        currentTag: String,
     },
 
     computed: {

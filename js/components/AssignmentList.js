@@ -14,7 +14,8 @@ export default {
             
             <assignment-tags 
                 :initial-tags="assignments.map(a => a.tag)"
-                @change="currentTag"
+                @change="currentTag = $event"
+                :current-tag="currentTag"
             />
 
             <ul class="border border-gray-600 divide-y divide-gray-600 mt-4">
